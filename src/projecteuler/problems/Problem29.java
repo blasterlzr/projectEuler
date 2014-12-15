@@ -16,10 +16,6 @@ public class Problem29 {
                 combos.add(new Power(a, b));
             }
         }
-        Power[] combosArr = combos.toArray(new Power[combos.size()]);
-        for(int i = 0; i<100; i++) {
-            System.out.println(combosArr[i].base + " --// " + combosArr[i].power);
-        }
         System.out.println("The result is : " + combos.size());
     }
     
@@ -54,6 +50,12 @@ public class Problem29 {
         public boolean equals(Object obj) {
             Power eq = (Power) obj;
             return this.base == eq.base && this.power == eq.power;
+        }
+
+        @Override
+        public int hashCode() {
+            String hash = base + "" + power;
+            return Integer.valueOf(hash);
         }
     }
 }
